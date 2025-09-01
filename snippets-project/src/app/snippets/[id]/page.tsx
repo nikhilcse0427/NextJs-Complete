@@ -1,6 +1,6 @@
-import { prisma } from '@/lib/prisma';
-import { Button } from '@/components/ui/button';
-import React from 'react';
+import { prisma } from '@/lib/prisma'
+import { Button } from '@/components/ui/button'
+import React from 'react'
 
 const PageSnippet = async ({ params }: { params: { id: string } }) => {
   // Convert `id` from string → number
