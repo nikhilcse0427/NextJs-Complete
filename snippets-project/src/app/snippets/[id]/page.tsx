@@ -6,6 +6,7 @@ import { DeleteSnippet } from '@/actions'
 
 const SnippetDetailPage = async ({params}:{params:Promise<{id:string}>}) => {
 const id = Number((await params).id)
+await new Promise((r) => setTimeout(r, 2000))
 const snippet = await prisma.snippet.findUnique({
   where:{
     id,
@@ -13,6 +14,7 @@ const snippet = await prisma.snippet.findUnique({
 })
 if(!snippet) return <h1>Snippet not found</h1>
 const DeleteEventHandler = DeleteSnippet.bind(null, snippet.id)
+
   return (
     <>
     <div className="flex flex-col gap-8">
