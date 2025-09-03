@@ -3,7 +3,7 @@ import { Button } from "@/components/ui/button";
 import { prisma } from "@/lib/prisma";
 
 //two ways
-export const dynamic ="force-dynamic" //disabling cashing feature making dynaic route
+export const dynamic = "force-dynamic" //disabling cashing feature making dynaic route
 export const revalidate = 0 //update each second
 
 export default async function Home() {
@@ -21,7 +21,7 @@ export default async function Home() {
 
       {/* Snippet List */}
       <div className="grid gap-6">
-        {snippets.map((snippet) => (
+        {snippets.map((snippet: any) => (
           <div
             key={snippet.id}
             className="p-5 rounded-2xl shadow-md border border-gray-200 bg-white hover:shadow-lg transition"
@@ -34,7 +34,7 @@ export default async function Home() {
                 <Button size="sm" className="rounded-lg">View</Button>
               </Link>
             </div>
-            
+
           </div>
         ))}
 

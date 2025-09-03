@@ -9,7 +9,7 @@ const SaveSnippet = async (id: number, code: string) => {
     where: { id },
     data: { code },
   })
-  revalidatePath('/') // on demand cashing
+  revalidatePath(`/snippets/${id}`) // on demand cashing
   redirect(`/snippets/${id}`)
 }
 
