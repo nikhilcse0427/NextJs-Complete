@@ -1,6 +1,7 @@
 'use server'
 import { prisma } from '@/lib/prisma'
 import { redirect } from 'next/navigation'
+import { revalidatePath } from 'next/cache'
 
 // Update snippet
 const SaveSnippet = async (id: number, code: string) => {
@@ -8,6 +9,7 @@ const SaveSnippet = async (id: number, code: string) => {
     where: { id },
     data: { code },
   })
+  revalidatePath('/') // on demand cashing
   redirect(`/snippets/${id}`)
 }
 
@@ -16,6 +18,7 @@ const DeleteSnippet = async (id: number) => {
   await prisma.snippet.delete({
     where: { id },
   })
+  revalidatePath('/')
   redirect('/')
 }
 
@@ -36,6 +39,7 @@ async function createSnippet(prevState: { message: string }, formdata: FormData)
       data: { title, code },
     })
     throw new Error("Oops somenthing went wrong")
+    revalidatePath('/')
 
   } catch (error) {
     console.error("Error creating snippet:", error)

@@ -2,6 +2,10 @@ import Link from "next/link";
 import { Button } from "@/components/ui/button";
 import { prisma } from "@/lib/prisma";
 
+//two ways
+export const dynamic ="force-dynamic" //disabling cashing feature making dynaic route
+export const revalidate = 0 //update each second
+
 export default async function Home() {
   const snippets = await prisma.snippet.findMany();
 
