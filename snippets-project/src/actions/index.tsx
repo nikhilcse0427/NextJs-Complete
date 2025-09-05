@@ -16,7 +16,7 @@ const SaveSnippet = async (id: number, code: string) => {
 // Delete snippet
 const DeleteSnippet = async (id: number) => {
   await prisma.snippet.delete({
-    where: { id },
+    where: { id }
   })
   revalidatePath('/')
   redirect('/')
